@@ -1,0 +1,15 @@
+branch-defaults:
+  default:
+    environment: VIM-Gradle-abghode-dev
+    group_suffix: null
+deploy:
+  artifact: D:\dev\miscallaneous\VIM-Gradle\build/libs\com.cg-0.0.1-SNAPSHOT.war
+global:
+  application_name: VIM-Gradle-abghode
+  branch: null
+  default_ec2_keyname: aws-eb4
+  default_platform: Tomcat 8 Java 8
+  default_region: sa-east-1
+  profile: eb-cli
+  repository: null
+  sc: null
