@@ -1,0 +1,97 @@
+package busSimulator;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.text.ParseException;
+
+import com.google.gson.Gson;
+import com.google.gson.stream.JsonReader;
+
+public class BusSimulator {
+
+	public static void main(String[] args) throws FileNotFoundException, IOException, ParseException {
+		Gson gson = new Gson();
+
+		try {
+
+			// BufferedReader br = new BufferedReader(new
+			// FileReader("D:\\transport\\data.json"));
+
+			JsonReader jsonReader = new JsonReader(new FileReader("D:\\transport\\data.json"));
+			jsonReader.beginObject();
+			
+			while (jsonReader.hasNext()) {
+				jsonReader.nextName();
+
+				while (jsonReader.hasNext()) {
+
+					String name = jsonReader.nextName();
+					if (name.equals("descriptor")) {
+						readApp(jsonReader);
+					}
+				}
+				jsonReader.endObject();
+				jsonReader.close();
+			}
+
+			// Object obj = parser.parse(new
+			// FileReader("D:\\transport\\data.json"));
+			//
+			// JSONObject jsonObject = (JSONObject) obj;
+			// String jsonString = jsonObject.toJSONString();
+			// JSONArray jsonArray = new JSONArray(jsonString);
+			//
+			//
+			//
+			// String lng = (String) jsonObject.get("lng");
+			//
+			// jsonObject.
+			//
+			// System.out.println(lat);
+			// System.out.println(lng);
+
+			// JSONArray coordinate = (JSONArray) jsonObject.get("Company
+			// List");
+
+			// Class.forName("com.mysql.jdbc.Driver");
+			// Connection con = (Connection)
+			// DriverManager.getConnection("jdbc:mysql://localhost:3306/test",
+			// "", "");
+			//
+			// // here sonoo is database name, root is username and password
+			// Statement stmt = con.createStatement();
+			// String query = "INSERT INTO routes values (2, 'lat2', 'lng2')";
+			// PreparedStatement preparedStmt = con.prepareStatement(query);
+			// preparedStmt.execute();
+			//
+			// System.out.println("Inserted data");
+			//
+			// ResultSet rs = stmt.executeQuery("select * from routes");
+			// while (rs.next())
+			// System.out.println(rs.getInt(1) + " " + rs.getString(2) + " " +
+			// rs.getString(3));
+			// con.close();
+
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	}
+
+	public static void readApp(JsonReader jsonReader) throws IOException {
+		jsonReader.beginObject();
+		while (jsonReader.hasNext()) {
+
+			while (jsonReader.hasNext()) {
+				String n = jsonReader.nextName();
+				if (n.equals("lat")) {
+					System.out.println(jsonReader.nextString());
+				}
+				if (n.equals("lng")) {
+					System.out.println(jsonReader.nextString());
+				}
+			}
+			jsonReader.endObject();
+		}
+	}
+}

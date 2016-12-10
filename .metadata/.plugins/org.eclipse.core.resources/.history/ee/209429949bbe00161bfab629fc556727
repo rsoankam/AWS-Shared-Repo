@@ -1,0 +1,17 @@
+package busSimulator;
+
+import com.mysql.jdbc.Connection;
+
+public class BusSimulator {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		try
+	    {
+	      // create a mysql database connection
+
+	      String myUrl = "jdbc:mysql://localhost/test";
+	      Class.forName("com.mysql.jdbc.Driver");
+	    }catch(Exception e){ System.out.println(e);}  
+	} 
+	}
